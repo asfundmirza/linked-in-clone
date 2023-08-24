@@ -1,0 +1,15 @@
+.headerIcons {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: gray;
+  padding: 9px;
+}
+.headerIcons:hover {
+  color: black;
+  cursor: pointer;
+}
+.iconTitle {
+  font-size: small;
+  font-weight: 400;
+}
