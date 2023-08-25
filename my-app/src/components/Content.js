@@ -1,21 +1,80 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "../components/Content.css";
 import { Avatar } from "@mui/material";
-import InputIcons from "../components/InputIcons";
+import InputIcons from "./InputIcons";
 import InsertPhotoIcon from "@mui/icons-material/InsertPhoto";
 import SmartDisplayIcon from "@mui/icons-material/SmartDisplay";
 import CalendarMonthIcon from "@mui/icons-material/CalendarMonth";
 import EditNoteIcon from "@mui/icons-material/EditNote";
 import ContentPosts from "./ContentPosts";
+import { db } from "../firebase";
+import {
+  getDocs,
+  addDoc,
+  collection,
+  updateDoc,
+  doc,
+  query,
+} from "firebase/firestore";
+
+import { serverTimestamp } from "firebase/firestore";
+
 function Content() {
+  const [postArray, setPostArray] = useState([]);
+  const [inputMessage, setInputMessage] = useState("");
+  const [addPost, setAddPost] = useState([]);
+
+  const getPostsList = async () => {
+    try {
+      const postRef = collection(db, "posts");
+      let postsQuery = query(postRef);
+
+      const data = await getDocs(postsQuery);
+      const postsArray = data.docs.map((post) => ({
+        ...post.data(),
+        id: post.id,
+      }));
+
+      setPostArray(postsArray);
+    } catch (error) {
+      console.log(error.message);
+    }
+  };
+  useEffect(() => {
+    getPostsList();
+    console.log(postArray);
+  }, []);
+
+  const sendHandler = async (e) => {
+    e.preventDefault();
+    try {
+      const post = await addDoc(collection(db, "posts"), {
+        name: "Asfund Mirza",
+        description: "this is the test",
+        message: inputMessage,
+        createdAt: serverTimestamp(),
+      });
+      console.log("published");
+      setAddPost(post);
+    } catch (error) {
+      console.log(error);
+    }
+  };
   return (
     <div className="content">
       <div className="input__container">
         <div className="input__search">
           <Avatar />
           <form>
-            <input type="text" placeholder="Start a post" />
-            <button type="submit">Send</button>
+            <input
+              type="text"
+              placeholder="Start a post"
+              value={inputMessage}
+              onChange={(e) => setInputMessage(e.target.value)}
+            />
+            <button type="submit" onClick={sendHandler}>
+              Send
+            </button>
           </form>
         </div>
         <div className="input__container__icons">
@@ -30,11 +89,15 @@ function Content() {
         </div>
       </div>
       {/* {Posts} */}
-      <ContentPosts
-        name="Asfund Mirza"
-        description="description"
-        message="this is the test"
-      />
+      {postArray.map((post) => (
+        <ContentPosts
+          key={post.id}
+          name={post.name}
+          description={post.description}
+          message={post.message}
+          photoURL=""
+        />
+      ))}
     </div>
   );
 }
