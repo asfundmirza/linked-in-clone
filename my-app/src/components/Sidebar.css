@@ -1,14 +1,16 @@
 .sidebar {
-  top: 80px;
+  /* top: 80px; */
   display: flex;
   flex-direction: column;
   text-align: center;
   flex: 0.2;
   position: sticky;
+  top: 0;
   height: fit-content;
   width: fit-content;
   border-radius: 10px;
   padding: 15px;
+  padding-right: 0;
 }
 .sidebar__top {
   display: flex;

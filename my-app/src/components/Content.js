@@ -89,7 +89,9 @@ function Content() {
           />
         </div>
       </div>
+
       {/* {Posts} */}
+
       {postArray.map((post) => (
         <ContentPosts
           key={post.id}
