@@ -15,6 +15,7 @@ import {
   updateDoc,
   doc,
   query,
+  orderBy,
 } from "firebase/firestore";
 
 import { serverTimestamp } from "firebase/firestore";
@@ -27,7 +28,7 @@ function Content() {
   const getPostsList = async () => {
     try {
       const postRef = collection(db, "posts");
-      let postsQuery = query(postRef);
+      let postsQuery = query(postRef, orderBy("createdAt", "desc"));
 
       const data = await getDocs(postsQuery);
       const postsArray = data.docs.map((post) => ({
