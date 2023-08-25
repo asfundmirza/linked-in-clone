@@ -1,0 +1,41 @@
+.content {
+  display: flex;
+  flex: 0.6;
+  flex-direction: column;
+  top: 80px;
+  padding: 15px;
+}
+.input__container {
+  background-color: white;
+  padding: 15px;
+  border: 1px solid lightgray;
+  border-radius: 10px;
+}
+.input__search {
+  display: flex;
+  margin-bottom: 10px;
+}
+.input__search > form {
+  display: flex;
+  border-radius: 30px;
+  width: 100%;
+  margin-left: 5px;
+  border: 1px solid lightgray;
+  padding: 10px;
+}
+
+.input__search > form > input {
+  outline: none;
+  border: none;
+  flex: 1;
+}
+
+.input__search > form > button {
+  display: none;
+}
+.input__container__icons {
+  display: flex;
+  justify-content: space-evenly;
+
+  padding: 5px;
+}

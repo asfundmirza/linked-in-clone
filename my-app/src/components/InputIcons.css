@@ -1,0 +1,13 @@
+.input__icons {
+  display: flex;
+  padding: 5px;
+  color: gray;
+}
+.icons__input {
+  margin-right: 2px;
+}
+.input__icons:hover {
+  color: black;
+  cursor: pointer;
+  background-color: whitesmoke;
+}

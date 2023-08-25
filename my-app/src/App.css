@@ -7,3 +7,6 @@
 .app__sidebar {
   display: flex;
 }
+.app__content {
+  display: flex;
+}
