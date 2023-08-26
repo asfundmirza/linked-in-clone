@@ -1,0 +1,60 @@
+.login {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 50vh;
+}
+.linkedIn-img > img {
+  object-fit: contain;
+  height: 80px;
+  padding: 15px;
+}
+.SignIn__component {
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  margin: 40px;
+  background-color: white;
+  border: 1px solid lightgray;
+  border-radius: 10px;
+  max-width: 400px;
+  width: calc(100% - 80px);
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+.SignIn__text {
+  margin-bottom: 40px;
+  font-weight: 400;
+  font-size: xx-large;
+}
+.Email {
+  font-size: x-large;
+  font-weight: 300;
+}
+.Password {
+  font-size: x-large;
+  font-weight: 300;
+}
+.input-container > input {
+  width: calc(100% - 32px);
+  padding: 15px;
+  border: 1px solid lightgray;
+  border-radius: 30px;
+  margin-bottom: 15px;
+}
+
+.SignIn__button {
+  margin-top: 10px;
+  width: 100%;
+  border: 1px solid blue;
+  border-radius: 30px;
+  padding: 15px;
+  background-color: rgb(21, 21, 200);
+  color: white;
+  font-size: larger;
+  margin-bottom: 10px;
+}
+.input-container > h4 {
+  margin-bottom: 15px;
+  color: gray;
+}
