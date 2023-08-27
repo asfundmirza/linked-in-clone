@@ -19,11 +19,14 @@ import {
 } from "firebase/firestore";
 
 import { serverTimestamp } from "firebase/firestore";
+import { useSelector } from "react-redux";
+import { selectUser } from "../features/userSlice";
 
 function Content() {
+  const user = useSelector(selectUser);
   const [postArray, setPostArray] = useState([]);
   const [inputMessage, setInputMessage] = useState("");
-  const [addPost, setAddPost] = useState([]);
+  const [addPost, setAddPost] = useState(0);
 
   const getPostsList = async () => {
     try {
@@ -44,19 +47,19 @@ function Content() {
   useEffect(() => {
     getPostsList();
     console.log(postArray);
-  }, []);
+  }, [addPost]);
 
   const sendHandler = async (e) => {
     e.preventDefault();
     try {
       const post = await addDoc(collection(db, "posts"), {
-        name: "Asfund Mirza",
-        description: "this is the test",
+        name: user.name,
+        description: user.email,
         message: inputMessage,
         createdAt: serverTimestamp(),
       });
       console.log("published");
-      setAddPost(post);
+      setAddPost((prevPost) => prevPost + 1);
     } catch (error) {
       console.log(error);
     }

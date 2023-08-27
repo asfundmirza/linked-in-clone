@@ -9,12 +9,13 @@ import BusinessCenterIcon from "@mui/icons-material/BusinessCenter";
 import NotificationsIcon from "@mui/icons-material/Notifications";
 import MessageIcon from "@mui/icons-material/Message";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
-import { useDispatch } from "react-redux";
-import { logout } from "../features/userSlice";
+import { useDispatch, useSelector } from "react-redux";
+import { logout, selectUser } from "../features/userSlice";
 import { auth } from "../firebase";
 import { signOut } from "firebase/auth";
 
 function Header() {
+  const user = useSelector(selectUser);
   const dispatch = useDispatch();
   const logoutHandler = async () => {
     dispatch(logout());
@@ -40,6 +41,7 @@ function Header() {
           icon={AccountCircleIcon}
           title="Me"
           onClick={logoutHandler}
+          avatar={user?.name[0]}
         />
       </div>
     </div>

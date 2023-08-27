@@ -6,8 +6,11 @@ import MessageIcon from "@mui/icons-material/Message";
 import RepeatIcon from "@mui/icons-material/Repeat";
 import SendIcon from "@mui/icons-material/Send";
 import InputIcons from "./InputIcons";
+import { useSelector } from "react-redux";
+import { selectUser } from "../features/userSlice";
 
 function ContentPosts({ name, description, message, photoURL }) {
+  // const user = useSelector(selectUser);
   return (
     <div className="content__posts">
       <div className="post__top">
