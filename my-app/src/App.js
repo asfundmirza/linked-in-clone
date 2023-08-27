@@ -6,27 +6,29 @@ import Content from "./components/Content";
 import Login from "./components/Login";
 import { login, logout, selectUser } from "./features/userSlice";
 import { useDispatch, useSelector } from "react-redux";
-import { auth, onAuthStateChanged } from "./firebase";
+import { auth } from "./firebase";
+import { getAuth, onAuthStateChanged } from "firebase/auth";
 
 function App() {
   const user = useSelector(selectUser);
   const dispatch = useDispatch();
 
-  // useEffect( () => {
-  //   auth.onAuthStateChanged((userAuth) => {
-  //     if (userAuth) {
-  //       dispatch(
-  //         login({
-  //           email: userAuth.email,
-  //           uid: userAuth.uid,
-  //           name: userAuth.displayName,
-  //         })
-  //       );
-  //     } else {
-  //       dispatch(logout());
-  //     }
-  //   });
-  // }, []);
+  useEffect(() => {
+    const auth = getAuth();
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
+        dispatch(
+          login({
+            email: user.email,
+            uid: user.uid,
+            name: user.displayName,
+          })
+        );
+      } else {
+        dispatch(logout());
+      }
+    });
+  }, []);
 
   return (
     <div>

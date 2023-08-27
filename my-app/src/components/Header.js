@@ -9,8 +9,17 @@ import BusinessCenterIcon from "@mui/icons-material/BusinessCenter";
 import NotificationsIcon from "@mui/icons-material/Notifications";
 import MessageIcon from "@mui/icons-material/Message";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
+import { useDispatch } from "react-redux";
+import { logout } from "../features/userSlice";
+import { auth } from "../firebase";
+import { signOut } from "firebase/auth";
 
 function Header() {
+  const dispatch = useDispatch();
+  const logoutHandler = async () => {
+    dispatch(logout());
+    await signOut(auth);
+  };
   return (
     <div className="header">
       <div className="header__left">
@@ -27,7 +36,11 @@ function Header() {
         <HeaderIcons icon={BusinessCenterIcon} title="Jobs" />
         <HeaderIcons icon={MessageIcon} title="Message" />
         <HeaderIcons icon={NotificationsIcon} title="Notifications" />
-        <HeaderIcons icon={AccountCircleIcon} title="Me" />
+        <HeaderIcons
+          icon={AccountCircleIcon}
+          title="Me"
+          onClick={logoutHandler}
+        />
       </div>
     </div>
   );

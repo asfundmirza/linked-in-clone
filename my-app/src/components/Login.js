@@ -2,7 +2,11 @@ import React, { useState } from "react";
 import "./Login.css";
 import linkedIn from "../images/Linkedin-Logo.png";
 import { auth } from "../firebase";
-import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
+import {
+  createUserWithEmailAndPassword,
+  updateProfile,
+  signInWithEmailAndPassword,
+} from "firebase/auth";
 import { useDispatch } from "react-redux";
 import { login } from "../features/userSlice";
 function Login() {
@@ -11,8 +15,38 @@ function Login() {
   const [password, setPassword] = useState("");
   const dispatch = useDispatch();
 
-  const loginHandler = (e) => {
+  const loginHandler = async (e) => {
     e.preventDefault();
+
+    try {
+      const userCredential = await signInWithEmailAndPassword(
+        auth,
+        email,
+        password
+      );
+
+      const user = userCredential.user;
+      console.log(user);
+
+      dispatch(
+        login({
+          email: user.email,
+          uid: user.uid,
+          name: user.displayName,
+        })
+      );
+      // auth.signInWithEmailAndPassword(email, password).then((userAuth) => {
+      //   dispatch(
+      //     login({
+      //       email: userAuth.user.email,
+      //       uid: userAuth.user.uid,
+      //       name: userAuth.user.displayName,
+      //     })
+      //   );
+      // });
+    } catch (error) {
+      console.log(error.message);
+    }
   };
   const registerHandler = async (e) => {
     if (!name) {
