@@ -2,6 +2,7 @@
   display: flex;
   flex-direction: column;
   background-color: ghostwhite;
+  /* align-items: center; */
 }
 
 .app__sidebar {
@@ -9,4 +10,8 @@
 }
 .app__content {
   display: flex;
+  justify-content: center;
+  max-width: 1200px;
+  margin-left: 20px;
+  margin-right: 20px;
 }

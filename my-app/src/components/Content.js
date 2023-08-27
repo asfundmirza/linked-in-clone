@@ -21,6 +21,7 @@ import {
 import { serverTimestamp } from "firebase/firestore";
 import { useSelector } from "react-redux";
 import { selectUser } from "../features/userSlice";
+import FlipMove from "react-flip-move";
 
 function Content() {
   const user = useSelector(selectUser);
@@ -40,13 +41,13 @@ function Content() {
       }));
 
       setPostArray(postsArray);
+      console.log(postArray);
     } catch (error) {
       console.log(error.message);
     }
   };
   useEffect(() => {
     getPostsList();
-    console.log(postArray);
   }, [addPost]);
 
   const sendHandler = async (e) => {
@@ -94,16 +95,17 @@ function Content() {
       </div>
 
       {/* {Posts} */}
-
-      {postArray.map((post) => (
-        <ContentPosts
-          key={post.id}
-          name={post.name}
-          description={post.description}
-          message={post.message}
-          photoURL=""
-        />
-      ))}
+      <FlipMove>
+        {postArray.map((post) => (
+          <ContentPosts
+            key={post.id}
+            name={post.name}
+            description={post.description}
+            message={post.message}
+            photoURL=""
+          />
+        ))}
+      </FlipMove>
     </div>
   );
 }
