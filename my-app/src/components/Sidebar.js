@@ -2,15 +2,19 @@ import { Avatar } from "@mui/material";
 import React from "react";
 import "./Sidebar.css";
 import backgroundImage from "../images/971.jpg";
+import { useSelector } from "react-redux";
+import { selectUser } from "../features/userSlice";
 
 function Sidebar() {
+  const user = useSelector(selectUser);
+  // console.log(user);
   return (
     <div className="sidebar">
       <div className="sidebar__top">
         <img src={backgroundImage} alt="backgroundImage" />
-        <Avatar className="sidebar__avatar" />
-        <h3 className="sidebar__name">Asfund Mirza</h3>
-        <h4 className="sidebar__email">asfundmirzaj@gmail.com</h4>
+        <Avatar className="sidebar__avatar">{user.name[0]}</Avatar>
+        <h3 className="sidebar__name">{user.name}</h3>
+        <h4 className="sidebar__email">{user.email}</h4>
       </div>
       <div className="sidebar__stats">
         <div className="sidebar__stat">

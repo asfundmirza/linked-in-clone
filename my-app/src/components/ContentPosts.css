@@ -1,0 +1,32 @@
+.content__posts {
+  margin-top: 10px;
+  background-color: white;
+  border-radius: 10px;
+  padding: 15px;
+  border: 1px solid lightgray;
+}
+.post__top {
+  display: flex;
+  margin-bottom: 15px;
+}
+.post__details {
+  margin-left: 5px;
+}
+.post__details > h3 {
+  font-size: 15px;
+}
+.post__details > p {
+  font-size: 12px;
+  color: gray;
+}
+.post__message {
+  overflow-wrap: anywhere;
+}
+.divider {
+  border: 1px solid whitesmoke;
+  margin: 10px 0;
+}
+.post__icons {
+  display: flex;
+  justify-content: space-evenly;
+}

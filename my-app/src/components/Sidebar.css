@@ -6,9 +6,8 @@
   flex: 0.2;
   position: sticky;
   height: fit-content;
-  width: fit-content;
   border-radius: 10px;
-  padding: 15px;
+  padding-right: 0;
 }
 .sidebar__top {
   display: flex;
@@ -67,7 +66,6 @@
   border: 1px solid lightgray;
   margin-top: 5px;
   border-radius: 10px;
-  position: sticky;
 }
 .sidebar__recentItems {
   display: flex;
@@ -83,4 +81,8 @@
   color: black;
   background-color: whitesmoke;
   border: 1px lightgray;
+}
+.sidebar__email {
+  margin-left: 5px;
+  margin-right: 5px;
 }
