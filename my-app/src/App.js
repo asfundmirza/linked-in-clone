@@ -42,7 +42,7 @@ function App() {
           <div className="app__content">
             <Sidebar className="app__sidebar" />
             <Content />
-            {/* <Widgets /> */}
+            <Widgets />
           </div>
         )}
       </div>

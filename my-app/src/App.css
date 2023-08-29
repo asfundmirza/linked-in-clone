@@ -11,7 +11,8 @@
 .app__content {
   display: flex;
   justify-content: center;
-  max-width: 1200px;
-  margin-left: 20px;
-  margin-right: 20px;
+  /* max-width: 1200px; */
+  margin-left: 120px;
+  margin-right: 120px;
+  margin-top: 20px;
 }

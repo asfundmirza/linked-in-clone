@@ -1,0 +1,37 @@
+.widgets {
+  top: 80px;
+  display: flex;
+  flex: 0.2;
+
+  padding: 10px;
+  border: 1px solid lightgray;
+  border-radius: 10px;
+  background-color: white;
+  height: fit-content;
+  position: sticky;
+}
+.widgets__top {
+  margin-top: 10px;
+  margin-bottom: 20px;
+}
+.widgets__top > h3 {
+  font-weight: 400;
+  font-size: x-large;
+}
+.widgets__bottom {
+  display: flex;
+}
+.widgets__left {
+  margin-right: 10px;
+}
+.widgets__right {
+  flex: 1;
+  margin-bottom: 20px;
+}
+.widgets__right > p {
+  color: gray;
+}
+.widgets__right > h4 {
+  font-size: large;
+  font-weight: 400;
+}

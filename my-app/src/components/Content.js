@@ -61,6 +61,7 @@ function Content() {
       });
       console.log("published");
       setAddPost((prevPost) => prevPost + 1);
+      setInputMessage("");
     } catch (error) {
       console.log(error);
     }

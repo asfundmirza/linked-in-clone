@@ -2,14 +2,16 @@
   display: flex;
   flex: 0.6;
   flex-direction: column;
-  /* top: 80px; */
+  top: 80px;
   padding: 15px;
+  padding-top: 0;
 }
 .input__container {
   background-color: white;
   padding: 15px;
   border: 1px solid lightgray;
   border-radius: 10px;
+  margin-bottom: 20px;
 }
 .input__search {
   display: flex;
